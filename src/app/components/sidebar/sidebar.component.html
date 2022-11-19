@@ -1,0 +1,25 @@
+<aside class="sidebar">
+    <div class="sidebar-action">
+        <span class="sidebar-action-heading">
+            <img src="./assets/icons/home.svg" alt="home" />
+            <a>Home</a>
+        </span>
+        <ul
+            *ngFor="let item of listSideBarAction; index as i"
+            class="sidebar-action-items"
+        >
+            <li
+                [routerLink]="item.slug"
+                routerLinkActive="active-button"
+                [routerLinkActiveOptions]="{ exact: true }"
+            >
+                <img src="{{ item.icon }}" />
+
+                <a>{{ item.name }}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="sidebar-footer">
+        <span>© Netpower Kvalitet 2022 – V 1.24.1.0</span>
+    </div>
+</aside>

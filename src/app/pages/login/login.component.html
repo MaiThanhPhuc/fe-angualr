@@ -1,0 +1,151 @@
+<div class="container height-100">
+    <div class="block-left height-100 container-50">
+        <img
+            class="block-left-image"
+            src="./assets/images/indeer.png"
+            alt="indeer"
+        />
+    </div>
+    <div class="block-right height-100">
+        <div class="block-right-wrapper">
+            <div class="block-right-heading">
+                <h2 class="block-right-heading__main">Hello, Welcome Back!</h2>
+                <h5 class="block-right-heading__sub">
+                    Please fill in your infomation to get access.
+                </h5>
+            </div>
+            <form
+                [formGroup]="loginForm"
+                (ngSubmit)="loginUser()"
+                class="block-right-form"
+            >
+                <div
+                    [class.error]="
+                (loginFormControl['email'].touched || submitted) &&
+                loginFormControl['email'].errors?.['required'] || (loginFormControl['email'].touched &&
+                loginFormControl['email'].errors?.['pattern'])
+                "
+                    id="input-email"
+                    class="block-right-form-email"
+                >
+                    <label
+                        id="label-email"
+                        for="email"
+                        class="block-right-form-label"
+                    >
+                        {{
+                        loginFormControl['email'].touched &&
+                        loginFormControl['email'].errors?.['pattern']
+                            ? 'Email invalid'
+                            : 'Email'
+                        }}
+                    </label>
+                    <input
+                        formControlName="email"
+                        name="email"
+                        id="email"
+                        type="text"
+                        placeholder="name@netpower.no"
+                        class="block-right-form-input input"
+                    />
+                    <button
+                        *ngIf="loginFormControl['email'].value != ''"
+                        type="button"
+                        (click)="loginFormControl['email'].reset('')"
+                        class="block-right-form-action__remove"
+                    ></button>
+                </div>
+                <div
+                    [class.error]="
+                (loginFormControl['password'].touched || submitted) &&
+                loginFormControl['password'].errors?.['required']
+        "
+                    id="input-password"
+                    class="block-right-form-password"
+                >
+                    <label
+                        id="label-password"
+                        for="password"
+                        class="block-right-form-label label"
+                    >
+                        Password
+                    </label>
+                    <input
+                        formControlName="password"
+                        name="password"
+                        id="password"
+                        placeholder="•••••••"
+                        type="{{ !isShowPassword ? 'password' : 'text' }}"
+                        class="block-right-form-input input"
+                    />
+                    <button
+                        *ngIf="
+                            isShowPassword &&
+                            loginFormControl['password'].value != ''
+                        "
+                        id="hide-password"
+                        type="button"
+                        (click)="onShowPassword()"
+                        class="block-right-form-action__hide"
+                    ></button>
+                    <button
+                        *ngIf="
+                            !isShowPassword &&
+                            loginFormControl['password'].value != ''
+                        "
+                        id="show-password"
+                        type="button"
+                        (click)="onShowPassword()"
+                        class="block-right-form-action__show"
+                    ></button>
+                </div>
+                <div class="block-right-form-remember">
+                    <div class="block-right-form-remember-checkbox">
+                        <input
+                            class="block-right-form-remember-checkbox__input"
+                            name="remember"
+                            id="remember"
+                            type="checkbox"
+                        />
+                        <label
+                            class="block-right-form-remember-checkbox__label label"
+                            for="remember"
+                            >Remember me</label
+                        >
+                    </div>
+                    <div class="block-right-form-remember-link">
+                        <a
+                            class="block-right-form-remember-link link"
+                            routerLink="/forgot-password"
+                            >Forgot Password?</a
+                        >
+                    </div>
+                </div>
+                <div class="block-right-form-submit">
+                    <button
+                        value="submit"
+                        type="submit"
+                        class="block-right-form-submit-button button"
+                    >
+                        Log In
+                    </button>
+                </div>
+                <div class="block-right-form-signup">
+                    <div class="block-right-form-signup-body">
+                        Don't have an account?
+                        <a
+                            routerLink="/register"
+                            class="block-right-form-signup-body__link link"
+                        >
+                            Sign up</a
+                        >
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="loading-container" *ngIf="loaderService.isLoading | async">
+            <app-loading></app-loading>
+        </div>
+    </div>
+</div>
+<app-badge></app-badge>

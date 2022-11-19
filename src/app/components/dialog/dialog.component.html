@@ -1,0 +1,76 @@
+<div class="modal">
+    <div class="modal-heading">
+        <span>Upload avatar</span>
+    </div>
+    <div class="modal-body">
+        <input
+            #file
+            (change)="preview(file.files)"
+            id="image-upload"
+            name="image-upload"
+            hidden
+            type="file"
+            accept="image/png, image/JPG, image/jpeg"
+        />
+        <label
+            for="image-upload"
+            *ngIf="!isPendingUpload && !imageSrc"
+            class="modal-body-inner__upload"
+        >
+            <div class="modal-body-inner-heading__upload">
+                <span>Choose a file</span>
+                or drag it here
+            </div>
+            <div class="modal-body-inner-icon__upload">
+                <img src="./assets/icons/upload.svg" alt="" />
+            </div>
+        </label>
+        <!-- //////////////////////////////////////////////////////////////////////// -->
+        <img
+            id="image-preview"
+            [src]="imageSrc"
+            alt=""
+            *ngIf="imageSrc && !isPendingUpload"
+        />
+        <!-- //////////////////////////////////////////////////////////////////////// -->
+        <div *ngIf="isPendingUpload" class="modal-body-inner__loading">
+            <app-loading></app-loading>
+            <div class="modal-body-inner-heading__loading">Uploading image</div>
+        </div>
+        <div *ngIf="imagePath" class="modal-body-inner-note">
+            {{ imagePath }}
+            <button
+                [disabled]="isPendingUpload"
+                (click)="reset()"
+                class="modal-body-inner-note__remove"
+            >
+                &#10006;
+            </button>
+        </div>
+        <div *ngIf="!imagePath" class="modal-body-inner-note">
+            Accept File Type: <span>.PNG, .JPG, .JPEG</span> only and &#60; 5MB
+        </div>
+    </div>
+    <!-- //////////////////////////////////////////////////////////////////////// -->
+
+    <div class="modal-body-button">
+        <div class="modal-body-button__cancel">
+            <button
+                [disabled]="isPendingUpload"
+                (click)="dialogService.onShowDialog(false)"
+                class="button-small-outline"
+            >
+                Cancel
+            </button>
+        </div>
+        <div class="modal-body-button__done">
+            <button
+                [disabled]="isPendingUpload || !imageSrc"
+                (click)="onUpLoadImage()"
+                class="button-small"
+            >
+                Done
+            </button>
+        </div>
+    </div>
+</div>

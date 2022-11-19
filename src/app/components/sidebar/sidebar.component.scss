@@ -1,0 +1,105 @@
+.inner {
+    display: flex;
+    flex-direction: column;
+}
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 22%;
+    background: var(--white);
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14),
+        0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2);
+    height: calc(100% - 76px);
+    position: fixed;
+}
+.sidebar-action {
+    padding: 10px;
+    border-bottom: 2px solid var(--border-input-color);
+}
+
+.sidebar-action-items {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    color: var(--text-color);
+}
+
+.sidebar-action-heading {
+    display: flex;
+    align-items: flex-end;
+    padding: 8px 0;
+    font-weight: 500;
+
+    img {
+        margin-left: 10px;
+        margin-right: 14px;
+    }
+}
+
+.sidebar-action-items li {
+    padding: 8px 8px 8px 46px;
+    cursor: pointer;
+    border-radius: 8px;
+    img {
+        display: none;
+    }
+}
+
+.sidebar-action-items li:hover {
+    background: linear-gradient(
+            0deg,
+            rgba(1, 99, 178, 0.12),
+            rgba(1, 99, 178, 0.12)
+        ),
+        #ffffff;
+}
+
+.active-button {
+    background: linear-gradient(
+            0deg,
+            rgba(1, 99, 178, 0.12),
+            rgba(1, 99, 178, 0.12)
+        ),
+        #ffffff;
+    color: black;
+}
+
+.sidebar-footer {
+    border-top: 1px solid var(--border-input-color);
+    padding: 16px 8px 16px 24px;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 16px;
+    color: var(--text-color);
+}
+
+@media only screen and (max-width: 1024px) {
+    .sidebar {
+        width: 72px;
+        height: calc(100% - 69px);
+    }
+    .sidebar-action-heading {
+        a {
+            display: none;
+        }
+        img {
+            margin-left: 14px;
+            margin-right: 14px;
+        }
+    }
+    .sidebar-action-items li {
+        padding: 16px 0;
+        display: flex;
+        justify-content: center;
+        a {
+            display: none;
+        }
+        img {
+            display: block;
+        }
+    }
+    .sidebar-footer {
+        display: none;
+    }
+}

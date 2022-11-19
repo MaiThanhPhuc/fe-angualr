@@ -1,0 +1,23 @@
+<div class="content">
+    <app-dialog *ngIf="showDialog" class="model-position"></app-dialog>
+    <div class="card-body">
+        <div class="card-avatar">
+            <img
+                class="thumb"
+                [src]="
+                    image !== 'data:image/jpeg;base64,null'
+                        ? image
+                        : '/assets/images/avatarDefault.png'
+                "
+            />
+            <button
+                (click)="dialogService.onShowDialog(true)"
+                class="card-avatar-button"
+            ></button>
+        </div>
+        <div class="card-name">{{ user.firstName + ' ' + user.lastName }}</div>
+        <div class="card-divider"></div>
+        <div class="card-job">{{ user.email }}</div>
+    </div>
+</div>
+<!--  -->

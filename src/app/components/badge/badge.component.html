@@ -1,0 +1,17 @@
+<div
+    [class.badge__success]="badgeType"
+    [class.badge__pending]="isPending"
+    *ngIf="showBadge"
+    class="badge"
+>
+    <div class="badge-content">
+        <img *ngIf="isPending" src="./assets/icons/loading-small.svg" alt="" />
+        <span>{{ content }}</span>
+    </div>
+    <div class="badge-button">
+        <button
+            (click)="badgeService.onHideBadge()"
+            class="badge-button__exit"
+        ></button>
+    </div>
+</div>

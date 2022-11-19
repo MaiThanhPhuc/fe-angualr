@@ -1,0 +1,227 @@
+<div class="container height-100">
+    <div class="block-left height-100 container-50">
+        <img
+            class="block-left-image"
+            src="./assets/images/netpower.png"
+            alt="indeer"
+        />
+    </div>
+    <div class="block-right height-100">
+        <div class="block-right-wrapper">
+            <div class="block-right-heading">
+                <h2 class="block-right-heading__main">Sign up</h2>
+                <h5 class="block-right-heading__sub">
+                    Create your account to use wonderful resources.
+                </h5>
+            </div>
+            <form
+                [formGroup]="registerForm"
+                (ngSubmit)="registerUser()"
+                class="block-right-form"
+            >
+                <div class="name-wrapper mb-20">
+                    <div
+                        [class.error]="
+                        (registerFormControl['fname'].touched || submitted) &&
+                        registerFormControl['fname'].errors?.['required']
+                    "
+                        class="block-right-form-fname"
+                    >
+                        <label for="fname" class="block-right-form-label">
+                            First Name
+                        </label>
+                        <input
+                            formControlName="fname"
+                            name="fname"
+                            id="fname"
+                            placeholder="First Name"
+                            class="block-right-form-input input"
+                        />
+                        <button
+                            *ngIf="registerFormControl['fname'].value != ''"
+                            type="button"
+                            (click)="registerFormControl['fname'].reset('')"
+                            class="block-right-form-action__remove"
+                        ></button>
+                    </div>
+                    <div
+                        [class.error]="
+                        (registerFormControl['lname'].touched || submitted) &&
+                        registerFormControl['lname'].errors?.['required']
+                    "
+                        class="block-right-form-lname"
+                    >
+                        <label for="lname" class="block-right-form-label">
+                            Last Name
+                        </label>
+                        <input
+                            formControlName="lname"
+                            name="lname"
+                            id="lname"
+                            placeholder="Last Name"
+                            class="block-right-form-input input"
+                        />
+                        <button
+                            *ngIf="registerFormControl['lname'].value != ''"
+                            type="button"
+                            (click)="registerFormControl['lname'].reset('')"
+                            class="block-right-form-action__remove"
+                        ></button>
+                    </div>
+                </div>
+                <div
+                    [class.error]="
+                    (registerFormControl['email'].touched || submitted) &&
+                    registerFormControl['email'].errors?.['required'] || (registerFormControl['email'].touched &&
+                    registerFormControl['email'].errors?.['pattern'])
+                    "
+                    class="block-right-form-email mb-20"
+                >
+                    <label for="email" class="block-right-form-label">
+                        {{
+                            registerFormControl['email'].touched &&
+                            registerFormControl['email'].errors?.['pattern']
+                                ? 'Email invalid'
+                                : 'Email'
+                        }}
+                    </label>
+                    <input
+                        formControlName="email"
+                        name="email"
+                        id="email"
+                        placeholder="name@netpower.no"
+                        class="block-right-form-input input"
+                    />
+                    <button
+                        *ngIf="registerFormControl['email'].value != ''"
+                        type="button"
+                        (click)="registerFormControl['email'].reset('')"
+                        class="block-right-form-action__remove"
+                    ></button>
+                </div>
+                <div
+                    [class.error]="
+                    (registerFormControl['password'].touched || submitted) &&
+                    registerFormControl['password'].errors?.['required'] || (registerFormControl['password'].touched &&
+                    registerFormControl['password'].errors?.['pattern'])
+            "
+                    class="block-right-form-password mb-8"
+                >
+                    <label for="password" class="block-right-form-label label">
+                        {{
+                            registerFormControl['password'].touched &&
+                            registerFormControl['password'].errors?.['pattern']
+                                ? 'Password invalid'
+                                : 'Password'
+                        }}
+                    </label>
+                    <input
+                        formControlName="password"
+                        name="password"
+                        id="password"
+                        type="{{ !isShowPassword ? 'password' : 'text' }}"
+                        placeholder="•••••••"
+                        class="block-right-form-input input"
+                    />
+                    <button
+                        type="button"
+                        (click)="onShowPassword()"
+                        class="block-right-form-action__show"
+                        *ngIf="!isShowPassword"
+                    ></button>
+                    <button
+                        type="button"
+                        (click)="onShowPassword()"
+                        class="block-right-form-action__hide"
+                        *ngIf="isShowPassword"
+                    ></button>
+                </div>
+                <div
+                    [class.error]="
+                    (registerFormControl['repassword'].touched || submitted) &&
+                    registerFormControl['repassword'].errors?.['required'] || (registerFormControl['repassword'].touched &&
+                    registerFormControl['repassword'].errors?.['confirmPasswordValidator'])
+            "
+                    class="block-right-form-repassword"
+                >
+                    <label
+                        for="repassword"
+                        class="block-right-form-label label"
+                    >
+                        {{
+                        registerFormControl['repassword'].touched &&
+                        registerFormControl['repassword'].errors?.['confirmPasswordValidator']
+                            ? 'Password not matched'
+                            : 'Confirm password'
+                        }}
+                    </label>
+                    <input
+                        formControlName="repassword"
+                        name="repassword"
+                        id="repassword"
+                        type="{{ !isShowRePassword ? 'password' : 'text' }}"
+                        placeholder="•••••••"
+                        class="block-right-form-input input"
+                    />
+
+                    <button
+                        type="button"
+                        (click)="onShowRePassword()"
+                        class="block-right-form-action__show"
+                        *ngIf="!isShowRePassword"
+                    ></button>
+                    <button
+                        type="button"
+                        (click)="onShowRePassword()"
+                        class="block-right-form-action__hide"
+                        *ngIf="isShowRePassword"
+                    ></button>
+                </div>
+
+                <div class="block-right-form-submit mb-16">
+                    <button
+                        onsubmit=""
+                        type="submit"
+                        class="block-right-form-submit-button button"
+                    >
+                        Sign up
+                    </button>
+                </div>
+                <div class="block-right-form-terms">
+                    <div class="block-right-form-terms-checkbox">
+                        <input
+                            class="block-right-form-terms-checkbox__input"
+                            name="terms"
+                            type="checkbox"
+                        />
+                        <label
+                            class="block-right-form-terms-checkbox__label label"
+                            for="terms"
+                            >I agree with terms and conditions</label
+                        >
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="block-right-form-signin mb-16">
+                    <a
+                        routerLink="/login"
+                        class="block-right-form-signin-button button-outline"
+                    >
+                        Sign in
+                    </a>
+                </div>
+                <div class="block-right-form-recover">
+                    <div class="block-right-form-recover-body">
+                        You forgot password?
+                        <a
+                            routerLink="/forgot-password"
+                            class="block-right-form-recover-body__link link"
+                            >Recover password
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<app-badge></app-badge>

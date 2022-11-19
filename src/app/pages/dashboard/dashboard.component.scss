@@ -1,0 +1,21 @@
+/* Side bar */
+/*  */
+/*  */
+.inner {
+    display: flex;
+    flex-direction: column;
+}
+.content {
+    margin-left: 22%;
+    height: calc(100% - 76px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+// Badge
+// End Badge
+@media only screen and (max-width: 1024px) {
+    .content {
+        margin-left: 72px;
+    }
+}

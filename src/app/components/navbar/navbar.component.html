@@ -1,0 +1,96 @@
+<nav class="navigator">
+    <div class="inner-navigator">
+        <div class="navigator-left">
+            <img src="./assets/images/netpower-logo.png" alt="netpower-logo" />
+        </div>
+        <div class="navigator-right">
+            <div class="navigator-right-search">
+                <input
+                    class="navigator-right-search__input"
+                    type="text"
+                    placeholder="Search"
+                />
+                <span class="navigator-right-search__icon">
+                    <img
+                        title="Search"
+                        src="./assets/icons/search.svg"
+                        alt="search-icon"
+                    />
+                </span>
+            </div>
+            <!-- Reponsive -->
+            <div class="navigator-right-hamburger">
+                <span
+                    (click)="onOpenHamburger()"
+                    *ngIf="!isOpenHamburger"
+                    class="navigator-right-hamburger__open"
+                >
+                    <img src="./assets/icons/hamburger.svg" alt="hamburger" />
+                </span>
+                <span
+                    (click)="onOpenHamburger()"
+                    *ngIf="isOpenHamburger"
+                    class="navigator-right-hamburger__close"
+                >
+                    <img
+                        title="Exit"
+                        src="./assets/icons/x-icon.svg"
+                        alt="exit"
+                    />
+                </span>
+            </div>
+            <!-- End Reponsive -->
+            <ul
+                [class.hamburger-active]="isOpenHamburger"
+                class="navigator-right-action hamburger-active"
+            >
+                <li
+                    *ngIf="isOpenHamburger"
+                    class="navigator-right-action__search"
+                >
+                    <img
+                        title="Search"
+                        src="./assets/icons/search.svg"
+                        alt="search-icon"
+                    />
+                </li>
+
+                <li class="navigator-right-action__notification">
+                    <img
+                        title="Notification"
+                        src="./assets/icons/notifications.svg"
+                        alt="notifications-icon"
+                    />
+                </li>
+                <li class="navigator-right-action__help">
+                    <img
+                        title="Help"
+                        src="./assets/icons/help-circle.svg"
+                        alt="help-icon"
+                    />
+                </li>
+                <li class="navigator-right-action__setting">
+                    <img
+                        title="Setting"
+                        src="./assets/icons/setting.svg"
+                        alt="setting-icon"
+                    />
+                </li>
+                <li class="navigator-right-action__avatar">
+                    <img
+                        title="Avatar"
+                        src="./assets/images/avatar-24x24.png"
+                        alt="avatar-icon"
+                    />
+                </li>
+                <li (click)="Logout()" class="navigator-right-action__avatar">
+                    <img
+                        title="Logout"
+                        src="./assets/icons/logout.svg"
+                        alt="logout-icon"
+                    />
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

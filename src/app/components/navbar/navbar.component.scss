@@ -1,0 +1,139 @@
+.navigator {
+    width: 100%;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
+        0px 2px 1px -1px rgba(0, 0, 0, 0.12), 0px 1px 3px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    background-color: var(--white);
+    z-index: 999;
+}
+
+.inner-navigator {
+    padding: 15px 28px;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigator-left img {
+    width: 76%;
+}
+.navigator-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    position: relative;
+}
+.navigator-right-search {
+    display: flex;
+    align-items: center;
+}
+.navigator-right-search > span {
+    border-right: 1px solid #d0d5dd;
+    border-top: 1px solid #d0d5dd;
+    border-bottom: 1px solid #d0d5dd;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 10px 14px 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.navigator-right-search > input {
+    padding: 10px 4px 10px 14px;
+    border-left: 1px solid #d0d5dd;
+    border-right: none;
+    border-top: 1px solid #d0d5dd;
+    border-bottom: 1px solid #d0d5dd;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    outline: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--text-color);
+}
+
+.navigator-right-action {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    li {
+        cursor: pointer;
+    }
+}
+
+.navigator-right-hamburger {
+    display: none;
+    cursor: pointer;
+    span {
+        width: 35px;
+        height: 35px;
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.12);
+        border-radius: 999px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .navigator-right-hamburger {
+        display: block;
+    }
+    .navigator-right-action {
+        display: none;
+    }
+    .navigator-right-search {
+        display: none;
+    }
+    .navigator-right {
+        gap: 16px;
+    }
+
+    /* click to active */
+    .hamburger-active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        right: -4px;
+        background-color: var(--white);
+        box-shadow: 0 1px 4px rgb(146 161 176 / 30%);
+        opacity: 0;
+        padding: 8px;
+        border-radius: 99px;
+        animation-duration: 1s;
+        animation-name: fadeInUp;
+        animation-fill-mode: both;
+        -webkit-animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+    }
+    /* end*/
+}
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0, 0px, 0);
+    }
+
+    to {
+        transform: translate3d(0, 15%, 0);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(0, 15%, 0);
+        opacity: 1;
+    }
+}

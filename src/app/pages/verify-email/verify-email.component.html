@@ -1,0 +1,56 @@
+<div class="container height-100">
+    <div class="block-left height-100 container-50">
+        <img
+            class="block-left-image"
+            src="./assets/images/netpower.png"
+            alt="indeer"
+        />
+    </div>
+    <!-- ///////////////////////// Loading //////////////////////////// -->
+    <div class="block-right height-100">
+        <div *ngIf="!isExpired && !isSuccess" class="block-right-check">
+            <div class="block-right-check-icon">
+                <app-loading></app-loading>
+                <!-- ///////////////////////// -->
+            </div>
+            <div class="block-right-check-subheading">
+                <span>Checking your verify link</span>
+            </div>
+        </div>
+        <!-- ///////////////////////// Success //////////////////////////// -->
+
+        <div *ngIf="!isExpired && isSuccess" class="block-right-success">
+            <div class="block-right-success-icon">
+                <img src="./assets/icons/tick.svg" alt="loading" />
+            </div>
+            <div class="block-right-success-subheading">
+                <span>Successfully activated your account.</span>
+            </div>
+            <div class="block-right-success-button">
+                <a routerLink="/login" class="button"> Click here to login </a>
+            </div>
+        </div>
+        <!-- ///////////////////////// Expired //////////////////////////// -->
+
+        <div *ngIf="isExpired" class="block-right-expired">
+            <div class="block-right-expired-icon">
+                <img src="./assets/icons/expired.svg" alt="loading" />
+            </div>
+            <div class="block-right-expired-subheading">
+                <span
+                    >Expired activation. Please re-activate your account.</span
+                >
+            </div>
+            <div class="block-right-expired-button">
+                <button
+                    (click)="onResendVerifyEmail()"
+                    type="button"
+                    class="button"
+                >
+                    Re-activate account
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<app-badge></app-badge>

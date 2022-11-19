@@ -1,0 +1,94 @@
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-body {
+    background: linear-gradient(340.59deg, #2296bd -4.77%, #57cff8 112.57%);
+    padding: 80px 32px;
+    border-radius: 20px;
+    color: var(--white);
+    font-family: 'Inter';
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card-avatar {
+    position: relative;
+    margin-bottom: 64px;
+    cursor: pointer;
+    img {
+        width: 220px;
+        border-radius: 999px;
+        object-fit: cover;
+        height: 220px;
+    }
+}
+.card-avatar-button {
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate(-40%, -40%);
+    width: 45px;
+    height: 45px;
+    border-radius: 9999px;
+    outline: none;
+    border: none;
+    background-image: url(../../../assets/icons/camera.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.card-name {
+    font-weight: 600;
+    font-size: 38px;
+    line-height: 67px;
+    margin-bottom: 49px;
+}
+
+.card-job {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+/* ////////////////////////////////////////////// */
+.model-position {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// Badge
+// End Badge
+
+@media only screen and (max-width: 720px) {
+    .card-body {
+        padding: 48px 24px;
+    }
+    .card-name {
+        font-size: 24px;
+        margin-bottom: 32px;
+        margin: 0;
+    }
+
+    .card-job {
+        font-size: 12px;
+    }
+    .card-avatar {
+        margin-bottom: 32px;
+        cursor: pointer;
+        img {
+            width: 140px;
+            height: 140px;
+        }
+        &-button {
+            transform: translate(-35%, -35%);
+            width: 35px;
+            height: 35px;
+        }
+    }
+}
